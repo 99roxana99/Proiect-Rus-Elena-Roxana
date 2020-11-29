@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "Rus_Roxana_Lab8Context"
+    }
+  }
+}
