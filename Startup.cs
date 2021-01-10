@@ -9,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Rus_Roxana_Lab8.Data;
+using Proiect.Data;
 
-namespace Rus_Roxana_Lab8
+namespace Proiect
 {
     public class Startup
     {
@@ -27,8 +27,8 @@ namespace Rus_Roxana_Lab8
         {
             services.AddRazorPages();
 
-            services.AddDbContext<Rus_Roxana_Lab8Context>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("Rus_Roxana_Lab8Context")));
+            services.AddDbContext<ProiectContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ProiectContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

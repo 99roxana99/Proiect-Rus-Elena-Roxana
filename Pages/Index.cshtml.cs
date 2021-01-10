@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace Rus_Roxana_Lab8.Pages
+namespace Proiect.Pages
 {
     public class IndexModel : PageModel
     {

@@ -5,28 +5,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Rus_Roxana_Lab8.Data;
-using Rus_Roxana_Lab8.Models;
+using Proiect.Data;
+using Proiect.Models;
 
-namespace Rus_Roxana_Lab8.Pages.Publishers
+namespace Proiect.Pages.Producers
 {
     public class CreateModel : PageModel
     {
-        private readonly Rus_Roxana_Lab8.Data.Rus_Roxana_Lab8Context _context;
+        private readonly Proiect.Data.ProiectContext _context;
 
-        public CreateModel(Rus_Roxana_Lab8.Data.Rus_Roxana_Lab8Context context)
+        public CreateModel(Proiect.Data.ProiectContext context)
         {
             _context = context;
         }
 
         public IActionResult OnGet()
         {
-            ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID", "PublisherName");
+            ViewData["ProducerID"] = new SelectList(_context.Set<Producer>(), "ID", "ProducerName");
             return Page();
         }
 
         [BindProperty]
-        public Publisher Publisher { get; set; }
+        public Producer Producer { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -37,7 +37,7 @@ namespace Rus_Roxana_Lab8.Pages.Publishers
                 return Page();
             }
 
-            _context.Publisher.Add(Publisher);
+            _context.Producer.Add(Producer);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

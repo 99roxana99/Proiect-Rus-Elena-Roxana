@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace Proiect.Models
 {
-    public class Category
+    public class Producer
     {
         public int ID { get; set; }
-        public string CategoryName { get; set; }
-        public ICollection<CarCategory> CarCategories { get; set; }
+        public string ProducerName { get; set; }
+        public ICollection<Car> Cars { get; set; }
+
     }
 }

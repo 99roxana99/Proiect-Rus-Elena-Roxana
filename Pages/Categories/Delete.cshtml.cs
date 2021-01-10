@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Rus_Roxana_Lab8.Data;
-using Rus_Roxana_Lab8.Models;
+using Proiect.Data;
+using Proiect.Models;
 
-namespace Rus_Roxana_Lab8.Pages.Categories
+namespace Proiect.Pages.Categories
 {
     public class DeleteModel : PageModel
     {
-        private readonly Rus_Roxana_Lab8.Data.Rus_Roxana_Lab8Context _context;
+        private readonly Proiect.Data.ProiectContext _context;
 
-        public DeleteModel(Rus_Roxana_Lab8.Data.Rus_Roxana_Lab8Context context)
+        public DeleteModel(Proiect.Data.ProiectContext context)
         {
             _context = context;
         }

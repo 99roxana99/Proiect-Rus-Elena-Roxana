@@ -1,5 +1,5 @@
 ﻿@page
-@model Rus_Roxana_Lab8.Pages.Publishers.IndexModel
+@model Proiect.Pages.Producers.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,16 +14,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Publisher[0].PublisherName)
+                @Html.DisplayNameFor(model => model.Producer[0].ProducerName)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Publisher) {
+@foreach (var item in Model.Producer) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PublisherName)
+                @Html.DisplayFor(modelItem => item.ProducerName)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |

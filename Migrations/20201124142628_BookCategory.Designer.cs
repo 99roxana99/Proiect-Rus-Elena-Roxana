@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Rus_Roxana_Lab8.Data;
+using Proiect.Data;
 
-namespace Rus_Roxana_Lab8.Migrations
+namespace Proiect.Migrations
 {
-    [DbContext(typeof(Rus_Roxana_Lab8Context))]
-    [Migration("20201124142628_BookCategory")]
-    partial class BookCategory
+    [DbContext(typeof(ProiectContext))]
+    [Migration("20201124142628_CarCategory")]
+    partial class CarCategory
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,43 +21,43 @@ namespace Rus_Roxana_Lab8.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Rus_Roxana_Lab8.Models.Book", b =>
+            modelBuilder.Entity("Proiect.Models.Car", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Author")
+                    b.Property<string>("Mark")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6, 2)");
 
-                    b.Property<int>("PublisherID")
+                    b.Property<int>("ProducerID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PublishingDate")
+                    b.Property<DateTime>("LaunchingDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("PublisherID");
+                    b.HasIndex("ProducerID");
 
-                    b.ToTable("Book");
+                    b.ToTable("Car");
                 });
 
-            modelBuilder.Entity("Rus_Roxana_Lab8.Models.BookCategory", b =>
+            modelBuilder.Entity("Proiect.Models.CarCategory", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BookID")
+                    b.Property<int>("CarID")
                         .HasColumnType("int");
 
                     b.Property<int>("CategoryID")
@@ -65,14 +65,14 @@ namespace Rus_Roxana_Lab8.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("BookID");
+                    b.HasIndex("CarID");
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("BookCategory");
+                    b.ToTable("CarCategory");
                 });
 
-            modelBuilder.Entity("Rus_Roxana_Lab8.Models.Category", b =>
+            modelBuilder.Entity("Proiect.Models.Category", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -87,40 +87,40 @@ namespace Rus_Roxana_Lab8.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("Rus_Roxana_Lab8.Models.Publisher", b =>
+            modelBuilder.Entity("Proiect.Models.Producer", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("PublisherName")
+                    b.Property<string>("ProducerName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Publisher");
+                    b.ToTable("Producer");
                 });
 
-            modelBuilder.Entity("Rus_Roxana_Lab8.Models.Book", b =>
+            modelBuilder.Entity("Proiect.Models.Car", b =>
                 {
-                    b.HasOne("Rus_Roxana_Lab8.Models.Publisher", "Publisher")
-                        .WithMany("Books")
-                        .HasForeignKey("PublisherID")
+                    b.HasOne("Proiect.Models.Producer", "Producer")
+                        .WithMany("Cars")
+                        .HasForeignKey("ProducerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Rus_Roxana_Lab8.Models.BookCategory", b =>
+            modelBuilder.Entity("Proiect.Models.CarCategory", b =>
                 {
-                    b.HasOne("Rus_Roxana_Lab8.Models.Book", "Book")
-                        .WithMany("BookCategories")
-                        .HasForeignKey("BookID")
+                    b.HasOne("Proiect.Models.Car", "Car")
+                        .WithMany("CarCategories")
+                        .HasForeignKey("CarID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Rus_Roxana_Lab8.Models.Category", "Category")
-                        .WithMany("BookCategories")
+                    b.HasOne("Proiect.Models.Category", "Category")
+                        .WithMany("CarCategories")
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

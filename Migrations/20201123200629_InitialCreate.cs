@@ -1,19 +1,19 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Rus_Roxana_Lab8.Migrations
+namespace Proiect.Migrations
 {
     public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Book",
+                name: "Car",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
+                    Model = table.Column<string>(nullable: true),
+                    Mark = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
@@ -25,7 +25,7 @@ namespace Rus_Roxana_Lab8.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Book");
+                name: "Car");
         }
     }
 }

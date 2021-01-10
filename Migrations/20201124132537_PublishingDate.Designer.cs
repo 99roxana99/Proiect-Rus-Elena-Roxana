@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Rus_Roxana_Lab8.Data;
+using Proiect.Data;
 
-namespace Rus_Roxana_Lab8.Migrations
+namespace Proiect.Migrations
 {
-    [DbContext(typeof(Rus_Roxana_Lab8Context))]
-    [Migration("20201124132537_PublishingDate")]
-    partial class PublishingDate
+    [DbContext(typeof(ProiectContext))]
+    [Migration("20201124132537_LaunchingDate")]
+    partial class LaunchingDate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,28 +21,28 @@ namespace Rus_Roxana_Lab8.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Rus_Roxana_Lab8.Models.Book", b =>
+            modelBuilder.Entity("Proiect.Models.Car", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Author")
+                    b.Property<string>("Mark")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(6, 2)");
 
-                    b.Property<DateTime>("PublishingDate")
+                    b.Property<DateTime>("LaunchingDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Book");
+                    b.ToTable("Car");
                 });
 #pragma warning restore 612, 618
         }

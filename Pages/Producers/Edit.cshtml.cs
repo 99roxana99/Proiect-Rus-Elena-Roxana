@@ -6,22 +6,22 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Rus_Roxana_Lab8.Data;
-using Rus_Roxana_Lab8.Models;
+using Proiect.Data;
+using Proiect.Models;
 
-namespace Rus_Roxana_Lab8.Pages.Publishers
+namespace Proiect.Pages.Producers
 {
     public class EditModel : PageModel
     {
-        private readonly Rus_Roxana_Lab8.Data.Rus_Roxana_Lab8Context _context;
+        private readonly Proiect.Data.ProiectContext _context;
 
-        public EditModel(Rus_Roxana_Lab8.Data.Rus_Roxana_Lab8Context context)
+        public EditModel(Proiect.Data.ProiectContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Publisher Publisher { get; set; }
+        public Producer Producer { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,9 +30,9 @@ namespace Rus_Roxana_Lab8.Pages.Publishers
                 return NotFound();
             }
 
-            Publisher = await _context.Publisher.FirstOrDefaultAsync(m => m.ID == id);
+            Producer = await _context.Producer.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Publisher == null)
+            if (Producer == null)
             {
                 return NotFound();
             }
@@ -48,7 +48,7 @@ namespace Rus_Roxana_Lab8.Pages.Publishers
                 return Page();
             }
 
-            _context.Attach(Publisher).State = EntityState.Modified;
+            _context.Attach(Producer).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace Rus_Roxana_Lab8.Pages.Publishers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PublisherExists(Publisher.ID))
+                if (!ProducerExists(Producer.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace Rus_Roxana_Lab8.Pages.Publishers
             return RedirectToPage("./Index");
         }
 
-        private bool PublisherExists(int id)
+        private bool ProducerExists(int id)
         {
-            return _context.Publisher.Any(e => e.ID == id);
+            return _context.Producer.Any(e => e.ID == id);
         }
     }
 }

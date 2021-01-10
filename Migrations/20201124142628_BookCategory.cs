@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Rus_Roxana_Lab8.Migrations
+namespace Proiect.Migrations
 {
-    public partial class BookCategory : Migration
+    public partial class CarCategory : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "PublisherID",
-                table: "Book",
+                name: "ProducerID",
+                table: "Car",
                 nullable: false,
                 defaultValue: 0);
 
@@ -26,12 +26,12 @@ namespace Rus_Roxana_Lab8.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Publisher",
+                name: "Producer",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PublisherName = table.Column<string>(nullable: true)
+                    ProducerName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -39,25 +39,25 @@ namespace Rus_Roxana_Lab8.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookCategory",
+                name: "CarCategory",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BookID = table.Column<int>(nullable: false),
+                    CarID = table.Column<int>(nullable: false),
                     CategoryID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookCategory", x => x.ID);
+                    table.PrimaryKey("PK_CarCategory", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_BookCategory_Book_BookID",
-                        column: x => x.BookID,
-                        principalTable: "Book",
+                        name: "FK_CarCategory_Car_CarID",
+                        column: x => x.CarID,
+                        principalTable: "Car",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookCategory_Category_CategoryID",
+                        name: "FK_CarCategory_Category_CategoryID",
                         column: x => x.CategoryID,
                         principalTable: "Category",
                         principalColumn: "ID",
@@ -65,25 +65,25 @@ namespace Rus_Roxana_Lab8.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Book_PublisherID",
-                table: "Book",
-                column: "PublisherID");
+                name: "IX_Car_ProducerID",
+                table: "Car",
+                column: "ProducerID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookCategory_BookID",
-                table: "BookCategory",
-                column: "BookID");
+                name: "IX_CarCategory_CarID",
+                table: "CarCategory",
+                column: "CarID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookCategory_CategoryID",
-                table: "BookCategory",
+                name: "IX_CarCategory_CategoryID",
+                table: "CarCategory",
                 column: "CategoryID");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Book_Publisher_PublisherID",
-                table: "Book",
-                column: "PublisherID",
-                principalTable: "Publisher",
+                name: "FK_Car_Producer_ProducerID",
+                table: "Car",
+                column: "ProducerID",
+                principalTable: "Producer",
                 principalColumn: "ID",
                 onDelete: ReferentialAction.Cascade);
         }
@@ -91,25 +91,25 @@ namespace Rus_Roxana_Lab8.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Book_Publisher_PublisherID",
-                table: "Book");
+                name: "FK_Car_Producer_ProducerID",
+                table: "Car");
 
             migrationBuilder.DropTable(
-                name: "BookCategory");
+                name: "CarCategory");
 
             migrationBuilder.DropTable(
-                name: "Publisher");
+                name: "Producer");
 
             migrationBuilder.DropTable(
                 name: "Category");
 
             migrationBuilder.DropIndex(
-                name: "IX_Book_PublisherID",
-                table: "Book");
+                name: "IX_Car_ProducerID",
+                table: "Car");
 
             migrationBuilder.DropColumn(
-                name: "PublisherID",
-                table: "Book");
+                name: "ProducerID",
+                table: "Car");
         }
     }
 }

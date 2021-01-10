@@ -6,8 +6,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Proiect;
 
-namespace Rus_Roxana_Lab8
+namespace Proiect
 {
     public class Program
     {

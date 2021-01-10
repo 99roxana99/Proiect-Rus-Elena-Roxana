@@ -1,23 +1,23 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Rus_Roxana_Lab8.Migrations
+namespace Proiect.Migrations
 {
-    public partial class PublishingDate : Migration
+    public partial class LaunchingDate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<decimal>(
                 name: "Price",
-                table: "Book",
+                table: "Car",
                 type: "decimal(6, 2)",
                 nullable: false,
                 oldClrType: typeof(decimal),
                 oldType: "decimal(18,2)");
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "PublishingDate",
-                table: "Book",
+                name: "LaunchingDate",
+                table: "Car",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
         }
@@ -25,12 +25,12 @@ namespace Rus_Roxana_Lab8.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "PublishingDate",
-                table: "Book");
+                name: "LaunchingDate",
+                table: "Car");
 
             migrationBuilder.AlterColumn<decimal>(
                 name: "Price",
-                table: "Book",
+                table: "Car",
                 type: "decimal(18,2)",
                 nullable: false,
                 oldClrType: typeof(decimal),

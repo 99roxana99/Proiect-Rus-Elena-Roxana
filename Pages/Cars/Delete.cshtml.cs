@@ -5,22 +5,22 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Rus_Roxana_Lab8.Data;
-using Rus_Roxana_Lab8.Models;
+using Proiect.Data;
+using Proiect.Models;
 
-namespace Rus_Roxana_Lab8.Pages.Books
+namespace Proiect.Pages.Cars
 {
     public class DeleteModel : PageModel
     {
-        private readonly Rus_Roxana_Lab8.Data.Rus_Roxana_Lab8Context _context;
+        private readonly Proiect.Data.ProiectContext _context;
 
-        public DeleteModel(Rus_Roxana_Lab8.Data.Rus_Roxana_Lab8Context context)
+        public DeleteModel(Proiect.Data.ProiectContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Book Book { get; set; }
+        public Car Car{ get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,9 +29,9 @@ namespace Rus_Roxana_Lab8.Pages.Books
                 return NotFound();
             }
 
-            Book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+            Car = await _context.Car.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Book == null)
+            if (Car == null)
             {
                 return NotFound();
             }
@@ -45,11 +45,11 @@ namespace Rus_Roxana_Lab8.Pages.Books
                 return NotFound();
             }
 
-            Book = await _context.Book.FindAsync(id);
+            Car = await _context.Car.FindAsync(id);
 
-            if (Book != null)
+            if (Car != null)
             {
-                _context.Book.Remove(Book);
+                _context.Car.Remove(Car);
                 await _context.SaveChangesAsync();
             }
 
